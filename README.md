@@ -29,17 +29,18 @@ This introduces a **covariate shift toward recent application years**, making ge
 
 The competition uses a **year-weighted Mean Squared Error (MSE)**.
 
-Each sample receives a weight equal to the ratio of its application year's frequency in the test set to its frequency in the training set:
+Each sample is weighted by
 
-```text
-W_year = f_test(year) / f_train(year)
-```
+$$
+W_{\text{year}} = \frac{f_{\text{test}}(\text{year})}{f_{\text{train}}(\text{year})}
+$$
 
-The weights are then normalized so that their average equals 1:
+and normalized such that
 
-```text
-mean(W_year) = 1
-```
+$$
+\overline{W} = 1.
+$$
+
 
 This metric accounts for the distribution shift toward more recent application years in the test set, rewarding models that generalize well under covariate shift rather than those that overfit historical data.
 
